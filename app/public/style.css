@@ -1,0 +1,40 @@
+img {
+    display: block;
+    width: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+}
+
+h1 {
+    color: green;
+    text-align: center;
+    font-size: 32pt;
+}
+
+p {
+    font-weight: bold;
+    text-align: center;
+    font-size: 20pt;
+}
+
+button {
+    height: 30px;
+    background: blue;
+    color: white;
+    font-size: 12pt;
+}
+
+h2, h3, select {
+    margin-left: 50px;
+}
+
+input {
+    width: 50%;
+    height: 25px;
+    margin-left: 50px;
+}
+
+#q1, #q2, #q2, #q4 {
+    text-align: center;
+}
