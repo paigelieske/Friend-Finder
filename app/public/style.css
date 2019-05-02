@@ -18,7 +18,7 @@ p {
     font-size: 20pt;
 }
 
-button {
+#start {
     height: 30px;
     background: blue;
     color: white;
@@ -30,11 +30,21 @@ h2, h3, select {
 }
 
 input {
-    width: 50%;
+    width: 40%;
     height: 25px;
     margin-left: 50px;
 }
 
-#q1, #q2, #q2, #q4 {
-    text-align: center;
+select {
+    width: 15%;
+    height: 30px;
+}
+
+#submit {
+    height: 30px;
+    background: blue;
+    color: white;
+    font-size: 12pt;
+    margin-left: 50px;
+    margin-top: 20px;
 }
