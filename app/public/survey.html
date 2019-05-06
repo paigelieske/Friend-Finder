@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Questionnaire</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Survey Questions</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -14,10 +15,10 @@
     <h2>About You</h2>
 
     <h3>Name (required)</h3>
-    <input type="text" name="name" placeholder="John Doe">
+    <input type="text" name="name" id="name" placeholder="John Doe">
 
     <h3>Link to Photo</h3>
-    <input type="url" name="photo" placeholder="https://mypicture.jpg">
+    <input type="url" name="photo" id="photo" placeholder="https://mypicture.jpg">
 
     <div class="survey">
         <h3>How often to you check social media?</h3>
@@ -121,8 +122,65 @@
         </select>
     </div>
 
-    <button id="submit">Submit!</button>
+    <button id="submit">Submit</button>
 
+    <footer class="footer">
+        <p class="api"><a href="/api/friends">API Friends List</a></p>
+    </footer>
+
+
+    <!-- <div id="results-modal" class="modal-fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title"><strong>Best Match</strong></h2>
+                </div>
+                <div class="modal-body">
+                    <h2 id="match-name"></h2>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <script type="text/javascript">
+
+
+        $("#submit").on("click", function (event) {
+            event.preventDefault();
+
+            if ($("#name").val() === "" || $("#photo").val() === "" || $("#q1").val() === "" || $("#q2").val() === "" || $("#q3").val() === "" || $("#q4").val() === "" || $("#q5").val() === "" || $("#q6").val() === "" || $("#q7").val() === "" || $("#q8").val() === "" || $("#q9").val() === "" || $("#q10").val() === "") {
+                alert("Please answer all of the questions.");
+            }
+
+            else {
+                var choices = {
+                    name: $("#name").val().trim(),
+                    photo: $("#photo").val().trim(),
+                    scores: [
+                        parseInt($("#q1").val()),
+                        parseInt($("#q2").val()),
+                        parseInt($("#q3").val()),
+                        parseInt($("#q4").val()),
+                        parseInt($("#q5").val()),
+                        parseInt($("#q6").val()),
+                        parseInt($("#q7").val()),
+                        parseInt($("#q8").val()),
+                        parseInt($("#q9").val()),
+                        parseInt($("#q10").val()),
+                    ]
+                }
+                console.log(choices);
+                $.post("/api/friends", choices, function (data) {
+
+                });
+            }
+        });
+
+    </script>
 
 </body>
 
