@@ -9,22 +9,24 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 
 <body>
 
     <h2>About You</h2>
+    <p id="fields">(all fields are required)</p>
 
-    <h3>Name (required)</h3>
+    <h4>Name</h4>
     <input type="text" name="name" id="name" placeholder="John Doe">
 
-    <h3>Link to Photo</h3>
+    <h4>Link to Photo</h4>
     <input type="url" name="photo" id="photo" placeholder="https://mypicture.jpg">
 
     <div class="survey">
-        <h3>How often to you check social media?</h3>
+        <h5>How often to you check social media?</h5>
         <select name="social" id="q1">
             <option value="">Select an option</option>
             <option value="5">Everyday</option>
@@ -34,7 +36,7 @@
             <option value="1">What is social media?</option>
         </select>
 
-        <h3>How often do you read books?</h3>
+        <h5>How often do you read books?</h5>
         <select name="books" id="q2">
             <option value="">Select an option</option>
             <option value="5">Everyday</option>
@@ -44,7 +46,7 @@
             <option value="1">What are books?</option>
         </select>
 
-        <h3>How often do you watch network or cable TV?</h3>
+        <h5>How often do you watch network or cable TV?</h5>
         <select name="tv" id="q3">
             <option value="">Select an option</option>
             <option value="5">Everyday</option>
@@ -54,7 +56,7 @@
             <option value="1">What is a TV?</option>
         </select>
 
-        <h3>How often do you use a streaming service for entertainment?</h3>
+        <h5>How often do you use a streaming service for entertainment?</h5>
         <select name="streaming" id="q4">
             <option value="">Select an option</option>
             <option value="5">Everyday</option>
@@ -64,7 +66,7 @@
             <option value="1">What does streaming mean?</option>
         </select>
 
-        <h3>How often do you eat at restaurants?</h3>
+        <h5>How often do you eat at restaurants?</h5>
         <select name="resaturant" id="q5">
             <option value="">Select an option</option>
             <option value="5">Everyday</option>
@@ -74,7 +76,7 @@
             <option value="1">What is a restaurant?</option>
         </select>
 
-        <h3>How often do you drink alcohol?</h3>
+        <h5>How often do you drink alcohol?</h5>
         <select name="alcohol" id="q6">
             <option value="">Select an option</option>
             <option value="5">Everyday</option>
@@ -84,7 +86,7 @@
             <option value="1">What is alcohol?</option>
         </select>
 
-        <h3>How often do you wash your hair?</h3>
+        <h5>How often do you wash your hair?</h5>
         <select name="hair" id="q7">
             <option value="">Select an option</option>
             <option value="5">Everyday</option>
@@ -94,7 +96,7 @@
             <option value="1">What is shampoo?</option>
         </select>
 
-        <h3>How often do you cry?</h3>
+        <h5>How often do you cry?</h5>
         <select name="cry" id="q8">
             <option value="">Select an option</option>
             <option value="5">Everyday</option>
@@ -104,7 +106,7 @@
             <option value="1">What are tears?</option>
         </select>
 
-        <h3>How often do you go for a walk?</h3>
+        <h5>How often do you go for a walk?</h5>
         <select name="walk" id="q9">
             <option value="">Select an option</option>
             <option value="5">Everyday</option>
@@ -114,7 +116,7 @@
             <option value="1">What is exercise?</option>
         </select>
 
-        <h3>How often do you eat candy?</h3>
+        <h5>How often do you eat candy?</h5>
         <select name="candy" id="q10">
             <option value="">Select an option</option>
             <option value="5">Everyday</option>
@@ -125,36 +127,31 @@
         </select>
     </div>
 
-    <button id="submit">Submit</button>
+    <button id="submit" data-toggle="modal" data-target="#results">Submit</button>
 
     <footer class="footer">
         <p class="api"><a href="/api/friends">API Friends List</a></p>
     </footer>
 
 
-    <div id="results-modal" class="modal fade" role="dialog">
+    <div class="modal fade" id="results" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h2 class="modal-title"><strong>Best Match</strong></h2>
+                    <h5 class="modal-title">Your Best Match</h5>
                 </div>
                 <div class="modal-body">
-                    <h2 id="match-name"></h2>
-                    <img id="match-photo" src="">
+                    <h3 id="match-name"></h3>
+                    <img id="match-photo" src="" alt="New Friend">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary mclose" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
 
     <script type="text/javascript">
-
-        $(window).on("load", function () {
-            $("#results-modal").hide();
-        });
 
         $("#submit").on("click", function (event) {
             event.preventDefault();
@@ -183,10 +180,8 @@
                 console.log(choices);
                 $.post("/api/friends", choices, function (data) {
                     console.log(data);
-                    $("#results-modal").show();
                     $("#match-name").text(data.name);
                     $("#match-photo").attr("src", data.photo);
-                    // $("#results-modal").modal("toggle");
                 });
             }
         });

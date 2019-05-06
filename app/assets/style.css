@@ -12,33 +12,44 @@ h1 {
     font-size: 32pt;
 }
 
-p {
+#directions, #start {
     font-weight: bold;
     text-align: center;
     font-size: 20pt;
 }
 
-#start {
+#begin {
     height: 30px;
     background: blue;
     color: white;
     font-size: 12pt;
 }
 
-h2, h3, select {
+h2, h3, h4, h5 {
     margin-left: 50px;
+    margin-top: 15px;
 }
 
+select {
+    margin-left: 50px;
+    width: 15%;
+    height: 25px;
+}
+
+#fields {
+    text-align: left;
+    margin-left: 50px;
+}
 input {
     width: 40%;
     height: 25px;
     margin-left: 50px;
 }
 
-select {
+/* select {
     width: 15%;
     height: 30px;
-}
+} */
 
 #submit {
     height: 30px;
