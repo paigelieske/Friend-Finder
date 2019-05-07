@@ -12,7 +12,15 @@ var friends = [
         "answers": [
             1, 1, 1, 1, 1, 1, 1, 1, 1, 1
         ]
+    },
+    {
+        "name": "Krusty the Klown",
+        "photo": "https://lh3.googleusercontent.com/cSuXZwucaYZl87g1VdTWm0MyS-QLSW-JnxWk96GYnKDNcw-DjyblAKOq2P-KzpLH5MWd=s85",
+        "answers": [
+            5, 5, 5, 5, 5, 5, 5, 5, 5, 5
+        ]
     }
+
 ];
 
 module.exports = friends;
